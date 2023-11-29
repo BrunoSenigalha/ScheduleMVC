@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ScheduleMVC.Context;
+using ScheduleMVC.Data;
+using ScheduleMVC.Models.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ builder.Services.AddDbContext<ScheduleMvcContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<ContactService>();
 
 var app = builder.Build();
 
@@ -29,5 +33,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+SeedingService.Seed(app);
 
 app.Run();

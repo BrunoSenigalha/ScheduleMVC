@@ -9,6 +9,16 @@
         public int AddressId { get; set; }
         public Address Address { get; set; }
 
+        public Contact()
+        {
+        }
+
+        public Contact(string name, string email, string cellphone)
+        {
+            Name = name;
+            Email = email;
+            Cellphone = cellphone;
+        }
         public Contact(string name, string email, string cellphone, Address address)
         {
             Name = name;
